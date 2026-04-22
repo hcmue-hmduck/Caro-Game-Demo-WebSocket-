@@ -56,10 +56,17 @@ function contentType(filePath) {
 }
 
 const server = http.createServer((req, res) => {
+  const requestUrl = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+  const pathname = requestUrl.pathname;
+
+  if (pathname.startsWith("/socket.io/")) {
+    return;
+  }
+
   const filePath =
-    req.url === "/"
+    pathname === "/"
       ? path.join(PUBLIC_DIR, "index.html")
-      : path.join(PUBLIC_DIR, req.url);
+      : path.join(PUBLIC_DIR, pathname);
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
