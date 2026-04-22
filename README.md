@@ -17,6 +17,7 @@
 **Game Cờ Caro realtime 2 người chơi, tạo/tham gia phòng nhanh, không cần database.**
 
 </div>
+## Deploy (Render): https://caro-game-demo-websocket.onrender.com/
 
 ## Giới thiệu
 
